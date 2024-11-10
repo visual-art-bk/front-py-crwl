@@ -11,8 +11,7 @@ type tSearchBoxProps = {
 };
 
 export default function SearchBox(props: tSearchBoxProps) {
-  const { isShowData, setIsShowData, setStateLinksJson } =
-    props;
+  const { isShowData, setIsShowData, setStateLinksJson } = props;
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = (event: { target: { value: any } }) => {
@@ -41,10 +40,10 @@ export default function SearchBox(props: tSearchBoxProps) {
         const response = await fetch(urlWithParams);
 
         if (!response.ok) {
-          const result = await response.json()
+          const result = await response.json();
           console.error("데이터 요청 실패!");
-          console.error('status', response.status)
-          console.error('error_message', result.error_message)
+          console.error("status", response.status);
+          console.error("error_message", result.error_message);
           throw new Error("데이터 요청 실패!");
         }
 
