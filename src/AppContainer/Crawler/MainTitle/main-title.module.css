@@ -1,0 +1,10 @@
+.rchr-main-title {
+  position: absolute;
+  top: 250px;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.rchr-main-title.inactive {
+  display: none;
+}

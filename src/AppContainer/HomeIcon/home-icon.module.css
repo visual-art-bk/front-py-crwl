@@ -1,0 +1,13 @@
+.rchr-home-icon {
+    display: none;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    cursor: pointer
+};
+.rchr-home-icon.md32 {
+    font-size: 32px;
+}
+.rchr-home-icon.active {
+    display: block;
+}
