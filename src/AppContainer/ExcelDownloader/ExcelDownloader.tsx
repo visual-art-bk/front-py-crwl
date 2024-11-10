@@ -1,40 +1,31 @@
 import { useEffect, useState } from "react";
+import { tLinksJson } from "../AppContainer";
 import "./excel-downloader.module.css";
 
 type tExcelDw = {
-  isShowData: boolean;
+  stateLinksJson: tLinksJson;
 };
-export default function ExcelDownloader(props: tExcelDw) {
-  const { isShowData } = props;
 
-  const defalutClassName = "excel-dw-container";
+export default function ExcelDownloader(props: tExcelDw) {
+  const { stateLinksJson } = props;
+
+  const defaultClassName = "excel-dw-container";
   const [classNameToExcelDw, setclassNameToExcelDw] =
-    useState(defalutClassName);
-    
+    useState(defaultClassName);
+
   useEffect(() => {
-    if (isShowData === true) {
-      setclassNameToExcelDw(`${defalutClassName} active`);
-      console.log(
-        "isShowData",
-        isShowData,
-        "현재 엑셀다운로더 클래스네임",
-        classNameToExcelDw
-      );
+    if (stateLinksJson.length !== 0) {
+      setclassNameToExcelDw(`${defaultClassName} active`);
     } else {
-      setclassNameToExcelDw(defalutClassName);
-      console.log(
-        "isShowData",
-        isShowData,
-        "현재 엑셀다운로더 클래스네임",
-        classNameToExcelDw
-      );
+      setclassNameToExcelDw(defaultClassName);
     }
-  }, [isShowData]);
-  return (
+  }, [stateLinksJson]);
+
+  return stateLinksJson.length !== 0 ? (
     <div className={classNameToExcelDw}>
       <div className="excel-dw">
-        <p>엑셀파일 내려받기</p>
+        <p>엑셀파일 내려받기123</p>
       </div>
     </div>
-  );
+  ) : null;
 }
