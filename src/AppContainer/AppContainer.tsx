@@ -52,7 +52,7 @@ export default function AppContainer() {
           stateLinksJson={stateLinksJson}
         ></DataTable>
 
-        <ExcelDownloader isShowData={isShowData}></ExcelDownloader>
+        <ExcelDownloader stateLinksJson={stateLinksJson}></ExcelDownloader>
       </div>
     </div>
   );
