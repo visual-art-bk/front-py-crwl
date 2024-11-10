@@ -33,7 +33,6 @@ export default function Crawler(props: tCrawlerProps) {
           isShowData={isShowData}
           setIsShowData={setIsShowData}
           setStateLinksJson={setStateLinksJson}
-          // stateSetScrappeds={stateSetScrappeds}
         ></SearchBox>
 
      
