@@ -6,6 +6,7 @@ type tHomeIconPros = {
   setIsShowData: Function;
   setStateLinksJson: Function;
 };
+
 export default function HomeIcon(props: tHomeIconPros) {
   const { isShowData, setIsShowData, setStateLinksJson } = props;
   const defaultClassName = "rchr-home-icon material-icons md-32";
@@ -24,11 +25,15 @@ export default function HomeIcon(props: tHomeIconPros) {
     }
   }, [isShowData]);
 
+  // isShowData가 true일 때만 렌더링
+  if (!isShowData) {
+    return null;
+  }
+
   return (
     <div className={classNameToHomeIcon} onClick={onClick}>
-      <div className="">
-        <span>home</span>
-      </div>
+      <span>home</span>
+      <span className="icon-label">홈</span>
     </div>
   );
 }
