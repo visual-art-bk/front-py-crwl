@@ -3,8 +3,8 @@
   top: 250px;
   font-size: 32px;
   font-weight: 800;
-}
-
-.rchr-main-title.inactive {
-  display: none;
+  text-align: center; /* 전체 텍스트 중앙 정렬 */
+  overflow: hidden;
+  white-space: nowrap; /* 한 줄로 유지 */
+  width: 100%; /* 부모 요소에 맞게 전체 너비 설정 */
 }
