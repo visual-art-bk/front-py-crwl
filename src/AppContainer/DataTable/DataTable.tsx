@@ -86,7 +86,7 @@ export default function DataTable({
   const [classNameOfTable, setClassNameOfTable] = useState(DEFAULT_CLASS_NAME);
   const [isLoading, setIsLoading] = useState(true);
 
-  const columns = ["블로거 닉네임", "포스팅 제목", "링크", "방문자수"];
+  const columns = ["네이버 블로거 닉네임", "포스팅 제목", "링크", "방문자수"];
 
   useEffect(() => {
     setIsLoading(stateLinksJson.length === 0);

@@ -1,88 +1,44 @@
+/* 테이블 컨테이너 */
 .table-container {
   display: none;
   width: 100%;
   overflow-x: auto;
   margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .table-container.active {
   display: flex;
-
   flex-direction: column;
-
   row-gap: 16px;
 }
 
-.responsive-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 400px;
-}
-
-.responsive-table th,
-.responsive-table td {
-  padding: 12px 15px;
-  text-align: left;
-  border: 1px solid #ddd;
-}
-
-.responsive-table th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-}
-
-.responsive-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.search-message {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  padding: 12px 20px;
-  font-size: 1em; /* 폰트 크기를 크게 조정 */
-  color: #ffffff; /* 텍스트 색상을 흰색으로 설정 */
-  background: rgb(34, 182, 125);/* 호버 시 색상 변경 */
-  border-radius: 8px; /* 둥근 모서리 추가 */
-  font-weight: bold; /* 텍스트를 두껍게 */
-}
-
-
-.naver-logo {
-  width: 24px;
-  height: auto;
-  margin-right: 8px;
-}
-
-/* 작은 화면에서 반응형 적용 */
-@media (max-width: 768px) {
-  .responsive-table {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .responsive-table th,
-  .responsive-table td {
-    padding: 8px 10px;
-  }
-}
-
-/* 로딩 스피너를 가운데에 표시하기 위한 스타일 */
+/* 로딩 스피너 스타일 */
 .loading-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  row-gap: 16px;
-  height: 100px;
+  row-gap: 20px;
+  height: 120px;
   margin: 20px 0;
   text-align: center;
   color: #333;
 }
 
 .loading-container .loading-message {
-  font-size: 20px;
-  font-weight: 700;  
+  font-size: 18px; /* 폰트 크기 확대 */
+  font-weight: 700;
+}
+
+/* 작은 화면에서 로딩 메시지 크기 조정 */
+@media (max-width: 480px) {
+  .loading-container {
+    height: 100px;
+  }
+
+  .loading-container .loading-message {
+    font-size: 16px;
+  }
 }
