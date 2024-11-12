@@ -12,7 +12,13 @@ type tDataTableProps = {
 };
 
 // 로딩 스피너 컴포넌트
-const LoadingSpinner = ({ isLoading }: { isLoading: boolean }) => {
+const LoadingSpinner = ({
+  isLoading,
+  isShowData,
+}: {
+  isLoading: boolean;
+  isShowData: boolean;
+}) => {
   const [remainingTime, setRemainingTime] = useState(REMAINING_TIME);
 
   useEffect(() => {
@@ -24,6 +30,12 @@ const LoadingSpinner = ({ isLoading }: { isLoading: boolean }) => {
       return () => clearInterval(timer);
     }
   }, [isLoading, remainingTime]);
+
+  useEffect(() => {
+    if (isShowData === true) {
+      setRemainingTime(REMAINING_TIME);
+    }
+  }, [isShowData]);
 
   return (
     <div className="loading-container">
@@ -98,10 +110,22 @@ export default function DataTable({
     );
   }, [isShowData]);
 
+  useEffect(() => {
+    if (stateLinksJson.length === 0 && isShowData === true) {
+      setClassNameOfTable(
+        isShowData ? `${DEFAULT_CLASS_NAME} active loading` : DEFAULT_CLASS_NAME
+      );
+    } else {
+      setClassNameOfTable(
+        isShowData ? `${DEFAULT_CLASS_NAME} active` : DEFAULT_CLASS_NAME
+      );
+    }
+  }, [isShowData, stateLinksJson]);
+
   return (
     <div className={classNameOfTable}>
       {isLoading ? (
-        <LoadingSpinner isLoading={isLoading} />
+        <LoadingSpinner isLoading={isLoading} isShowData={isShowData} />
       ) : (
         <>
           {/* <SearchMessage /> */}
