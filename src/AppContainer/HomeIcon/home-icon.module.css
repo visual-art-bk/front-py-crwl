@@ -43,6 +43,10 @@
       top: 16px;
       left: 16px;
       font-size: 24px; /* 작은 화면에서 아이콘 크기 축소 */
+
+      width: 100%;
+      height: 64px;
+      background-color: white;
     }
   
     .icon-label {

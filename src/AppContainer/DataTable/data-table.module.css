@@ -18,7 +18,10 @@
 @media (max-width: 768px) {
   .table-container {
     overflow-x: auto; /* 모바일에서 좌우 스크롤 허용 */
-    padding-top: 32px;
+    padding-top: 96px;
+  }
+  .table-container.loading {
+    padding: 0;
   }
   .responsive-table {
     min-width: 600px; /* 테이블의 최소 너비 설정 */
