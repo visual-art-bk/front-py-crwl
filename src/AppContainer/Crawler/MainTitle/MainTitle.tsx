@@ -12,7 +12,7 @@ export default function MainTitle(props: tMainTitleProps) {
     defaultClassnameMainTitle
   );
 
-  const fullText = "무엇이든 크롤링 해보세요.";
+  const fullText = "무엇이든 크롤링 해보세요!";
   const [displayedText, setDisplayedText] = useState(""); // 초기 상태 빈 문자열로 설정
 
   useEffect(() => {
