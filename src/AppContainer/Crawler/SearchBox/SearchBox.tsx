@@ -17,7 +17,7 @@ export default function SearchBox(props: tSearchBoxProps) {
   const handleChange = (event: { target: { value: any } }) => {
     setSearchTerm(event.target.value);
   };
-
+  
   const handleKeyDown = async (event: {
     key: string;
     preventDefault: () => void;

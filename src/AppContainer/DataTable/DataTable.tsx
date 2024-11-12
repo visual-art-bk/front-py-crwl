@@ -1,39 +1,53 @@
 import React, { useEffect, useState, memo } from "react";
-import ClipLoader from "react-spinners/ClipLoader";
-import ScaleLoader from "react-spinners/ScaleLoader";
+import PulseLoader from "react-spinners/PulseLoader";
 import "./data-table.module.css";
 import { tScrappeds, tLinksJson } from "../AppContainer";
+
+const REMAINING_TIME = 60;
 
 type tDataTableProps = {
   isShowData: boolean;
   setIsShowData: (show: boolean) => void;
-  stateLinksJson: tLinksJson; // 이미 배열 타입으로 가정합니다.
+  stateLinksJson: tLinksJson;
 };
 
 // 로딩 스피너 컴포넌트
 const LoadingSpinner = ({ isLoading }: { isLoading: boolean }) => {
-  const [remainingTime, setRemainingTime] = useState(60); // 초기 남은 시간 설정
+  const [remainingTime, setRemainingTime] = useState(REMAINING_TIME);
 
   useEffect(() => {
-    // 타이머 설정: isLoading이 true일 때만 타이머가 실행되도록 설정
     if (isLoading && remainingTime > 0) {
       const timer = setInterval(() => {
         setRemainingTime((prevTime) => prevTime - 1);
-      }, 1000); // 1초 간격으로 실행
+      }, 1000);
 
-      return () => clearInterval(timer); // 컴포넌트가 언마운트될 때 타이머 정리
+      return () => clearInterval(timer);
     }
   }, [isLoading, remainingTime]);
 
   return (
     <div className="loading-container">
-      <ScaleLoader color="#36d7b7" loading={isLoading} />
+      <PulseLoader
+        color="#36d7b7"
+        size={15}
+        speedMultiplier={0.5}
+        loading={isLoading}
+      />
       <div className="loading-message">
-        <p>데이터를 불러오는 중이에요. 남은 시간 {remainingTime}초</p>
+        <p>남은 시간 {remainingTime}초</p>
+      </div>
+      <div className="loading-message">
+        <p>네이버에서 데이터 수집 중이에요.</p>
       </div>
     </div>
   );
 };
+
+const SearchMessage = () => (
+  <div className="search-message">
+    <span>네이버 블로그에서 검색했어요</span>
+  </div>
+);
 
 // 테이블 컴포넌트
 const DataTableContent = memo(
@@ -74,12 +88,10 @@ export default function DataTable({
 
   const columns = ["블로거 닉네임", "포스팅 제목", "링크", "방문자수"];
 
-  // 데이터가 로드될 때 로딩 상태 업데이트
   useEffect(() => {
-    setIsLoading(stateLinksJson.length === 0); // 데이터가 없는 경우에만 로딩 상태 유지
+    setIsLoading(stateLinksJson.length === 0);
   }, [stateLinksJson]);
 
-  // 테이블 클래스 이름 업데이트
   useEffect(() => {
     setClassNameOfTable(
       isShowData ? `${DEFAULT_CLASS_NAME} active` : DEFAULT_CLASS_NAME
@@ -91,7 +103,10 @@ export default function DataTable({
       {isLoading ? (
         <LoadingSpinner isLoading={isLoading} />
       ) : (
-        <DataTableContent columns={columns} data={stateLinksJson} />
+        <>
+          {/* <SearchMessage /> */}
+          <DataTableContent columns={columns} data={stateLinksJson} />
+        </>
       )}
     </div>
   );

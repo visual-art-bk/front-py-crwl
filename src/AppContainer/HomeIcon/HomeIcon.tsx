@@ -13,16 +13,12 @@ export default function HomeIcon(props: tHomeIconPros) {
 
   const onClick = () => {
     setIsShowData(false);
-  };
-
-  const initDataTable = (blankData: []) => {
-    setStateLinksJson(blankData);
+    setStateLinksJson([]);
   };
 
   useEffect(() => {
     if (isShowData === true) {
       setClassName("rchr-home-icon material-icons md-32 active");
-      initDataTable([]);
     } else {
       setClassName(defaultClassName);
     }
